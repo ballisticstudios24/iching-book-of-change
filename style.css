@@ -1,0 +1,665 @@
+/* =========================================================
+   Still Patterns — Unified Theme (v2)
+   Focus: mobile smoothness (less scrolling), calmer UI
+   ========================================================= */
+
+:root{
+  --paper:  #F7F3E7;
+  --paper2: #FFFDF8;
+
+  --ink:    #2F2723;
+  --muted:  rgba(47,39,35,.72);
+  --hair:   rgba(47,39,35,.14);
+
+  --seal:   #B23A2B;
+  --gold:   rgba(208,160,72,.16);
+
+  --radius: 18px;
+  --radius2: 22px;
+
+  --shadow:  0 18px 44px rgba(47,39,35,.11);
+  --shadow2: 0 10px 24px rgba(47,39,35,.09);
+
+  --max: 1120px;
+}
+
+/* Base */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family:"Noto Serif","Noto Serif SC",serif;
+  color:var(--ink);
+  background:
+    radial-gradient(900px 520px at 16% 0%, rgba(178,58,43,.10), transparent 60%),
+    radial-gradient(900px 520px at 90% 10%, var(--gold), transparent 62%),
+    linear-gradient(180deg, var(--paper), var(--paper2));
+}
+
+/* Paper grain */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(47,39,35,.022),
+      rgba(47,39,35,.022) 1px,
+      transparent 1px,
+      transparent 7px);
+  opacity:.38;
+  mix-blend-mode:multiply;
+}
+
+a{ color:inherit; }
+
+/* Layout wrapper */
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 22px 14px 58px;
+  position:relative;
+}
+
+/* ---------------------------------------------------------
+   Header
+   --------------------------------------------------------- */
+.siteHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom: 14px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+  min-width:0;
+}
+
+.brandMark{
+  width:42px;
+  height:42px;
+  border-radius: 14px;
+  border: 1px solid var(--hair);
+  background: rgba(255,255,255,.62);
+  box-shadow: var(--shadow2);
+  padding: 6px;
+  display:block;
+}
+
+.brandTitle{ min-width:0; }
+.brandName{
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.2px;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.brandTag{
+  margin-top:3px;
+  font-size:12px;
+  color:var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.topNav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  padding:9px 12px;
+  border-radius:999px;
+  border:1px solid var(--hair);
+  background: rgba(255,255,255,.58);
+  text-decoration:none;
+  color:var(--ink);
+  font-size:12px;
+  box-shadow: 0 6px 14px rgba(47,39,35,.08);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.chip:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(47,39,35,.10);
+}
+.chipActive{
+  border-color: rgba(178,58,43,.35);
+  box-shadow: 0 10px 18px rgba(178,58,43,.12);
+}
+
+/* Focus */
+.btn:focus-visible,
+.chip:focus-visible,
+.footerLink:focus-visible{
+  outline: 2px solid rgba(178,58,43,.35);
+  outline-offset: 2px;
+  border-radius: 14px;
+}
+
+/* ---------------------------------------------------------
+   Card + Hero
+   --------------------------------------------------------- */
+.card{
+  border: 1px solid var(--hair);
+  background: rgba(255,255,255,.58);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.hero{
+  margin-bottom: 12px;
+  overflow:hidden;
+  position:relative;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:-55%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 28% 18%, rgba(255,255,255,.28), transparent 55%),
+    radial-gradient(circle at 78% 40%, rgba(255,255,255,.18), transparent 60%);
+  transform: rotate(8deg);
+  opacity:.55;
+}
+
+.heroInner{
+  display:grid;
+  gap:14px;
+  position:relative;
+}
+
+.kicker{
+  font-size:12px;
+  color: var(--muted);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.heroTitle{
+  margin:6px 0 6px;
+  font-size: 30px;
+  line-height:1.08;
+  letter-spacing:.2px;
+}
+
+.heroLead{
+  margin:0;
+  color: rgba(47,39,35,.80);
+  font-size: 14px;
+  line-height:1.55;
+  max-width: 72ch;
+}
+
+.heroAside{
+  border: 1px solid var(--hair);
+  border-radius: 18px;
+  background: rgba(255,255,255,.50);
+  padding: 12px;
+  box-shadow: 0 10px 20px rgba(47,39,35,.07);
+}
+
+.miniLabel{
+  font-size:12px;
+  color: var(--muted);
+  letter-spacing:.12em;
+  text-transform: uppercase;
+}
+.miniText{
+  margin-top:6px;
+  font-size:13px;
+  line-height:1.45;
+}
+.miniHint{
+  margin-top:8px;
+  font-size:12px;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   Builder: grid now has 3 panels (canvas, controls, reading)
+   Mobile-first: stacks naturally in the right order
+   --------------------------------------------------------- */
+.builderCard{ padding: 16px; }
+
+.builderGrid{
+  display:grid;
+  gap:12px;
+  grid-template-columns: 1fr; /* mobile stack */
+}
+
+.panel{
+  border:1px solid var(--hair);
+  background: rgba(255,255,255,.52);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 10px 20px rgba(47,39,35,.07);
+}
+
+.panelTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom: 10px;
+}
+
+.panelTitle{
+  font-size:12px;
+  color: var(--muted);
+  letter-spacing:.16em;
+  text-transform: uppercase;
+}
+
+.badge{
+  border:1px solid var(--hair);
+  border-radius: 999px;
+  background: rgba(255,255,255,.56);
+  padding: 7px 10px;
+  font-size:12px;
+  color: rgba(47,39,35,.85);
+}
+.badgeSoft{
+  border-color: rgba(47,39,35,.10);
+  color: rgba(47,39,35,.72);
+}
+
+/* Canvas */
+.panelCanvas{ padding: 12px; }
+
+.canvasFrame{
+  position:relative;
+  overflow:hidden;
+  border-radius: 18px;
+  border: 1px solid var(--hair);
+  background:
+    radial-gradient(520px 280px at 50% 18%, rgba(47,39,35,.06), transparent 65%),
+    rgba(255,255,255,.68);
+  padding: 10px;
+}
+
+/* Mobile: keep canvas compact to avoid scroll fatigue */
+#hexDraw{
+  width:100%;
+  height:auto;
+  display:block;
+  max-height: 210px;
+}
+
+.canvasGlow{
+  position:absolute;
+  inset:-90%;
+  pointer-events:none;
+  background: radial-gradient(circle at 50% 50%, rgba(178,58,43,.07), transparent 55%);
+  opacity:.35;
+}
+
+.legend{
+  margin-top: 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color: var(--muted);
+}
+.dot{ width:10px; height:10px; border-radius:999px; display:inline-block; }
+.dotSeal{ background: var(--seal); }
+
+/* Reading */
+.hexTitle{
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing:.2px;
+  margin: 0 0 6px;
+}
+
+.hexMeaning{
+  font-size:14px;
+  line-height:1.62;
+  color: rgba(47,39,35,.82);
+  margin: 0 0 14px;
+  max-width: 74ch;
+}
+
+.metaRow{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top: 10px;
+}
+
+.metaPill{
+  border:1px solid var(--hair);
+  border-radius: 999px;
+  padding: 7px 9px;
+  font-size:12px;
+  background: rgba(255,255,255,.56);
+  color: rgba(47,39,35,.82);
+}
+
+.relating{
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 18px;
+}
+
+/* ---------------------------------------------------------
+   Controls: now its own panel so it stays accessible on mobile
+   --------------------------------------------------------- */
+.panelControls{ padding: 12px; }
+
+.controls{
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.controlRow{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+/* Buttons */
+.btn{
+  border: 1px solid rgba(47,39,35,.18);
+  background: rgba(255,255,255,.68);
+  color: var(--ink);
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size:14px;
+  cursor:pointer;
+
+  box-shadow: 0 6px 12px rgba(47,39,35,.08);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+
+  flex: 1 1 140px; /* mobile-friendly */
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(47,39,35,.10);
+}
+.btn:active{
+  transform: translateY(0px);
+  filter: brightness(.985);
+}
+
+.btnPrimary{
+  background: var(--seal);
+  border-color: rgba(0,0,0,.05);
+  color:#fff;
+  font-weight:800;
+  box-shadow: 0 10px 18px rgba(178,58,43,.16);
+}
+
+.btn:not(.btnPrimary){
+  background: rgba(255,255,255,.52);
+  box-shadow: none;
+}
+
+.btn:disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Hint */
+.hint{
+  margin-top: 10px;
+  font-size:12px;
+  color: var(--muted);
+  line-height:1.45;
+  pointer-events:none;
+}
+
+/* Coins */
+.coinStrip{
+  margin-top: 12px;
+  border: 1px solid rgba(47,39,35,.10);
+  border-radius: 18px;
+  background: rgba(255,255,255,.46);
+  padding: 10px;
+}
+
+.coinLabel{
+  font-size:12px;
+  color: var(--muted);
+  letter-spacing:.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.coinRow{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:flex-start;
+  padding: 4px 2px 2px;
+}
+
+.coinGhost,
+.coin{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border: 1px solid rgba(47,39,35,.20);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:12px;
+  user-select:none;
+}
+
+.coinGhost{ background: rgba(255,255,255,.52); }
+
+.coin{ background: rgba(255,255,255,.70); }
+
+.coinHeads{
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.92), rgba(255,255,255,.58));
+}
+.coinTails{
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.82), rgba(255,255,255,.50));
+  opacity:.94;
+}
+
+.coinFlip{ animation: coinFlip .38s ease; }
+
+@keyframes coinFlip{
+  0%   { transform: rotateY(0deg)   scale(1); }
+  40%  { transform: rotateY(140deg) scale(1.06); }
+  70%  { transform: rotateY(260deg) scale(1.02); }
+  100% { transform: rotateY(360deg) scale(1); }
+}
+
+.coinInfo{
+  margin-top: 10px;
+  font-size:12px;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   Closing reflection (quiet, compact)
+   --------------------------------------------------------- */
+.closing{
+  margin-top: 12px;
+  border-top: 1px solid rgba(47,39,35,.08);
+  padding-top: 12px;
+  opacity: .96;
+}
+
+.closingTitle{
+  margin:0 0 4px;
+  font-size: 15px;
+}
+
+.closingText{
+  margin:0;
+  font-size:12px;
+  color: var(--muted);
+  line-height:1.45;
+}
+
+.closingActions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top: 10px;
+}
+
+.scroll{
+  margin-top: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(47,39,35,.14);
+  background:
+    radial-gradient(900px 240px at 50% 10%, rgba(47,39,35,.045), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.40));
+  box-shadow: 0 12px 24px rgba(47,39,35,.08);
+  overflow:hidden;
+}
+
+.scrollTop{
+  display:flex;
+  justify-content:center;
+  padding: 12px 12px 0;
+}
+
+.scrollLabel{
+  font-size:12px;
+  color: var(--muted);
+  letter-spacing:.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(47,39,35,.12);
+  padding-bottom: 8px;
+  width: 100%;
+  text-align:center;
+}
+
+.scrollBody{
+  padding: 14px 14px 16px;
+  position:relative;
+}
+
+.scrollBody::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: radial-gradient(circle at 22% 20%, rgba(255,255,255,.26), transparent 55%);
+  transform: rotate(10deg);
+  opacity:.6;
+  pointer-events:none;
+}
+
+.scrollQuote{
+  position:relative;
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.45;
+  text-align:center;
+  padding: 10px 8px 8px;
+}
+
+.scrollNote{
+  position:relative;
+  margin-top: 6px;
+  font-size:12px;
+  text-align:center;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   Footer
+   --------------------------------------------------------- */
+.footNote{
+  margin-top: 12px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.siteFooter{
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.footerLinks{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.footerLink{
+  color: var(--muted);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(47,39,35,.14);
+}
+.footerLink:hover{
+  color: rgba(47,39,35,.85);
+}
+.sep{ opacity:.55; }
+
+/* ---------------------------------------------------------
+   Desktop enhancements (keeps reading in view)
+   --------------------------------------------------------- */
+@media (min-width: 880px){
+  .wrap{ padding: 26px 20px 66px; }
+
+  .heroInner{
+    grid-template-columns: 1.35fr .65fr;
+    align-items:start;
+  }
+
+  .heroTitle{ font-size: 38px; }
+
+  /* Desktop: two columns with controls under reading (nice flow) */
+  .builderGrid{
+    grid-template-columns: 1.05fr .95fr;
+    align-items:start;
+  }
+
+  /* Place controls above reading in the right column */
+  .panelControls{ order: 2; }
+  .panelReading{ order: 3; }
+
+  /* Keep right column visible while glancing at the hexagram */
+  .panelControls{
+    position: sticky;
+    top: 16px;
+    align-self: start;
+  }
+
+  /* Larger canvas on desktop */
+  #hexDraw{ max-height: none; }
+
+  .hexTitle{ font-size: 26px; }
+}

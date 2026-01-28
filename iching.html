@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I Ching — Book of Changes | Still Patterns</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700;800&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header class="siteHeader">
+      <a class="brand" href="index.html" aria-label="Still Patterns home">
+        <img class="brandMark" src="ichinglogo.png" alt="" aria-hidden="true">
+        <div class="brandTitle">
+          <div class="brandName">Still Patterns</div>
+          <div class="brandTag">Quiet spaces for reflection</div>
+        </div>
+      </a>
+
+      <nav class="topNav" aria-label="Primary">
+        <a class="chip" href="index.html">Home</a>
+        <a class="chip chipActive" href="iching.html" aria-current="page">I Ching</a>
+        <a class="chip" href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Page intro -->
+      <section class="card hero">
+        <div class="heroInner">
+          <div>
+            <div class="kicker">Book of Changes</div>
+            <h1 class="heroTitle">Ask what matters most.</h1>
+            <p class="heroLead">Cast one line at a time. Let the pattern reveal itself.</p>
+          </div>
+
+          <div class="heroAside" aria-label="Method">
+            <div class="miniLabel">Method</div>
+            <div class="miniText">Three coins · One line per cast · Bottom → top</div>
+            <div class="miniHint">This tool is for reflection, not prediction.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Builder -->
+      <section class="card builderCard" id="builder" aria-label="Hexagram builder">
+        <div class="builderGrid">
+
+          <!-- Panel 1: Canvas -->
+          <div class="panel panelCanvas">
+            <div class="panelTop">
+              <div class="badge" id="hexBadge">Lines: 0/6</div>
+              <div class="panelTitle">Hexagram</div>
+            </div>
+
+            <div class="canvasFrame" id="hexCanvas">
+              <canvas id="hexDraw" width="520" height="320" aria-label="Hexagram canvas"></canvas>
+              <div class="canvasGlow" aria-hidden="true"></div>
+            </div>
+
+            <div class="legend">
+              <span class="dot dotSeal" aria-hidden="true"></span>
+              <span>Changing line</span>
+            </div>
+          </div>
+
+          <!-- Panel 2: Controls (mobile: directly under hexagram) -->
+          <div class="panel panelControls" aria-label="Casting controls">
+            <div class="panelTop">
+              <div class="panelTitle">Cast</div>
+              <div class="badge badgeSoft">One line per press</div>
+            </div>
+
+            <div class="controls" aria-label="Controls">
+              <div class="controlRow">
+                <button class="btn btnPrimary" id="btnCast" type="button">Cast a line</button>
+                <button class="btn" id="btnReset" type="button">Begin again</button>
+              </div>
+
+              <div class="hint">
+                Each press tosses three coins and reveals the next line. Changing lines indicate movement.
+              </div>
+
+              <div class="coinStrip" aria-label="Coins">
+                <div class="coinLabel">Coins</div>
+
+                <div class="coinRow" id="coinRow" aria-hidden="true">
+                  <div class="coinGhost"></div>
+                  <div class="coinGhost"></div>
+                  <div class="coinGhost"></div>
+                </div>
+
+                <div class="coinInfo" id="coinInfo">Coins: — — — | Total: — | Line: —</div>
+              </div>
+            </div>
+
+            <!-- Closing reflection lives with casting (feels like a completion moment) -->
+            <section class="closing" id="closingSection" aria-label="Closing reflection" hidden>
+              <div class="closingHead">
+                <h2 class="closingTitle">Closing reflection</h2>
+                <p class="closingText">If you wish, take one short line to carry with you.</p>
+              </div>
+
+              <div class="closingActions">
+                <button class="btn" id="btnScroll" type="button">Open the scroll</button>
+                <button class="btn" id="btnScrollSkip" type="button">Not now</button>
+              </div>
+
+              <div class="scroll" id="scrollArea" hidden>
+                <div class="scrollTop">
+                  <div class="scrollLabel">A line to carry</div>
+                </div>
+
+                <div class="scrollBody">
+                  <div class="scrollQuote" id="scrollText">—</div>
+                  <div class="scrollNote">Brief by design — it completes the reading.</div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Panel 3: Reading -->
+          <div class="panel panelReading" aria-label="Reading">
+            <div class="readingTop">
+              <div class="hexTitle" id="hexTitle">—</div>
+
+              <div class="hexMeaning" id="hexMeaning">
+                Press <b>Cast a line</b> to begin.
+              </div>
+
+              <div class="metaRow">
+                <div class="metaPill" id="hexBits">Bits: —</div>
+                <div class="metaPill" id="changingInfo">Changing lines: —</div>
+              </div>
+
+              <div class="relating" id="relatingInfo"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="footNote card">
+        <p>
+          Tip: ask one clean question. Try: “What should I understand about this situation right now?”
+        </p>
+      </section>
+    </main>
+
+    <footer class="siteFooter">
+      <div>© Still Patterns</div>
+      <div class="footerLinks">
+        <a class="footerLink" href="about.html">About</a>
+        <span class="sep">·</span>
+        <a class="footerLink" href="index.html">Home</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
